@@ -32,7 +32,7 @@ jobs:
         with:
           context: . 
           push: true
-          tags: hyp2nos/crm-app:${{ github.run_number }}
+          tags: hyp2nos/crm-app:1.0.${{ github.run_number }}
       # - name: Setup SSH
       #   uses: webfactory/ssh-agent@v0.5.0
       #   with:
