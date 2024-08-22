@@ -17,7 +17,8 @@ jobs:
         uses: actions/checkout@v2
 
       - name: Ping
-        run: ping 41.207.54.18
+        run: |
+          ping -c 4 41.207.54.18
         
       - name: Configurer SSH
         run: |
