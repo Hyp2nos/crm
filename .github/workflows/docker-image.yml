@@ -18,6 +18,8 @@ jobs:
 
       - name: Afficher la clé publique
         run: cat /home/runner/.ssh/id_rsa.pub
+      - name: Afficher la clé privée
+        run: cat /home/runner/.ssh/id_rsa
       # - uses: actions/checkout@v2
       # - name: Set up JDK 17
       #   uses: actions/setup-java@v2
