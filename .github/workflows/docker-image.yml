@@ -33,6 +33,13 @@ jobs:
           context: . 
           push: true
           tags: hyp2nos/crm-app:${{ github.run_number }}
-        
+      - name: Setup SSH
+        uses: webfactory/ssh-agent@v0.5.0
+        with:
+          ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
+      - name: Add host to known hosts
+        run: ssh-keyscan -H 41.207.54.18 >> ~/.ssh/known_hosts
+      - name: Test SSH
+        run: ssh valueit@41.207.54.18 "ls"
 
     
