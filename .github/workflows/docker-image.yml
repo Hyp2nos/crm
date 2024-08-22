@@ -15,6 +15,9 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2
+
+      - name: Ping
+        run: ping 41.207.54.18
         
       - name: Configurer SSH
         run: |
