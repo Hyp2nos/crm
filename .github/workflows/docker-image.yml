@@ -13,13 +13,18 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Générer une clé SSH
-        run: ssh-keygen -t rsa -b 4096 -f /home/runner/.ssh/id_rsa -N "" -C "github-action"
+      - name: Checkout repository
+        uses: actions/checkout@v2
+        
+      - name: Configurer SSH
+        run: |
+          mkdir -p ~/.ssh
+          echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_rsa
+          chmod 600 ~/.ssh/id_rsa
+          ssh-keyscan -H "41.207.54.18" >> ~/.ssh/known_hosts
 
-      - name: Afficher la clé publique
-        run: cat /home/runner/.ssh/id_rsa.pub
-      - name: Afficher la clé privée
-        run: cat /home/runner/.ssh/id_rsa
+      - name: Se connecter via SSH et exécuter des commandes
+        run: ssh -o StrictHostKeyChecking=no valueit@41.207.54.18 "ls /"
       # - uses: actions/checkout@v2
       # - name: Set up JDK 17
       #   uses: actions/setup-java@v2
