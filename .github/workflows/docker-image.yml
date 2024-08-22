@@ -38,6 +38,6 @@ jobs:
         with:
           ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
       - name: Test SSH
-        run: ssh valueit@41.207.54.18 "ls"
+        run: ssh valueit@valueit-OptiPlex-3040 "ls"
 
     
